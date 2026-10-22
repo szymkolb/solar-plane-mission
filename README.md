@@ -24,3 +24,6 @@ Autonomiczny skrypt sterujący dronem, przygotowany w ramach rekrutacji do AGH S
 3. Uruchom skrypt w terminalu:
    ```bash
    python mission.py
+   
+## Podgląd działania
+![Podgląd symulacji w Mission Planner i PyCharm](images/preview.png)
