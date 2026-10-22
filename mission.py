@@ -2,9 +2,6 @@ import time
 import math
 from pymavlink import mavutil
 
-# master = mavutil.mavlink_connection('tcp:127.0.0.1:5760')
-# master = mavutil.mavlink_connection('udp:127.0.0.1:14550')
-# master = mavutil.mavlink_connection('udpin:localhost:14550')
 master = mavutil.mavlink_connection('tcp:127.0.0.1:5762')
 
 master.wait_heartbeat()
@@ -36,7 +33,7 @@ def armAndTakeoff(target_altitude):
     print("Osiągnięto wysokość startową")
 
 def goToLocation(lat, lon, alt):
-    print(f"Przelot do punktu GPS: {lat}, {lon} na wysokosć {alt}")
+    print(f"Przelot do punktu GPS: {lat}, {lon} na wysokość {alt}")
 
     master.mav.mission_item_int_send(
         master.target_system,
@@ -78,7 +75,6 @@ def returnToLaunch():
         else:
             print('Powrót do bazy trwa...')
 
-
 def changeSpeed(speedMps):
     print(f"Zmienianie prędkości na {speedMps}m/s...")
     master.mav.command_long_send(
@@ -92,7 +88,7 @@ def changeSpeed(speedMps):
         0, 0, 0, 0
     )
 
-def waitUntilReachedTarget(targetLat, targetLon, tresholdMeters=3):
+def waitUntilReachedTarget(targetLat, targetLon, thresholdMeters=3):
     print("Oczekiwanie na dotarcie do celu...")
     speedReduced = False
 
@@ -123,10 +119,9 @@ def waitUntilReachedTarget(targetLat, targetLon, tresholdMeters=3):
                 speedReduced = True
 
 
-            if distance < tresholdMeters:
+            if distance < thresholdMeters:
                 print("Cel osiągnięty!")
                 break
-
 
 if __name__ == "__main__":
     setGuidedMode()
