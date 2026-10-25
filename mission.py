@@ -50,7 +50,7 @@ def goToLocation(lat, lon, alt):
 
 def simulatedSensorCheck():
     print("Osiągnięto obszar badań. Sprawdzanie czujników...")
-    time.sleep(2) #normalnie tutaj by odpalał się jakiś czujnik, kamera czy LiDAR
+    time.sleep(2) # Miejsce na implementację obsługi czujnkia (kamera/LiDAR)
     objectDetected = True
 
     if objectDetected:
@@ -82,7 +82,7 @@ def changeSpeed(speedMps):
         master.target_component,
         mavutil.mavlink.MAV_CMD_DO_CHANGE_SPEED,
         0,
-        1, #typ prędkości - przelotowa
+        1,
         speedMps,
         -1,
         0, 0, 0, 0
@@ -96,7 +96,7 @@ def waitUntilReachedTarget(targetLat, targetLon, thresholdMeters=3):
         master.target_system,
         master.target_component,
         mavutil.mavlink.MAV_DATA_STREAM_POSITION,
-        4, #4 na sekunde
+        4,
         1
     )
 
